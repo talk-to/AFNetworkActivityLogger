@@ -55,6 +55,17 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestLoggerLevel) {
 @property (nonatomic, strong) NSPredicate *filterPredicate;
 
 /**
+ Block used to log requests. If `nil`, default logging would take place. `nil` by default.
+ */
+@property (nonatomic, copy) void (^requestLoggingBlock)(AFHTTPRequestLoggerLevel level, NSURLRequest *request);
+
+/**
+ Block used to log responses. If `nil`, default logging would take place. `nil` by default.
+ */
+@property (nonatomic, copy) void (^responseLoggingBlock)(AFHTTPRequestLoggerLevel level, NSURLRequest *request, NSURLResponse *response, NSTimeInterval elapsedTime, NSError *error);
+
+
+/**
  Returns the shared logger instance.
  */
 + (instancetype)sharedLogger;
