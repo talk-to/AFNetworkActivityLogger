@@ -31,6 +31,15 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestLoggerLevel) {
   AFLoggerLevelFatal = AFLoggerLevelOff,
 };
 
+typedef void (^AFNetworkActivityRequestLoggingBlock) (AFHTTPRequestLoggerLevel level, NSURLRequest *request);
+
+typedef void (^AFNetworkActivityResponseLoggingBlock) (AFHTTPRequestLoggerLevel level,
+                                                       NSURLRequest *request,
+                                                       NSURLResponse *response,
+                                                       id responseObject,
+                                                       NSTimeInterval elapsedTime,
+                                                       NSError *error);
+
 /**
  `AFNetworkActivityLogger` logs requests and responses made by AFNetworking, with an adjustable level of detail.
  
@@ -57,13 +66,12 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestLoggerLevel) {
 /**
  Block used to log requests. If `nil`, default logging would take place. `nil` by default.
  */
-@property (nonatomic, copy) void (^requestLoggingBlock)(AFHTTPRequestLoggerLevel level, NSURLRequest *request);
+@property (nonatomic, copy) AFNetworkActivityRequestLoggingBlock requestLoggingBlock;
 
 /**
  Block used to log responses. If `nil`, default logging would take place. `nil` by default.
  */
-@property (nonatomic, copy) void (^responseLoggingBlock)(AFHTTPRequestLoggerLevel level, NSURLRequest *request, NSURLResponse *response, NSTimeInterval elapsedTime, NSError *error);
-
+@property (nonatomic, copy) AFNetworkActivityResponseLoggingBlock responseLoggingBlock;
 
 /**
  Returns the shared logger instance.

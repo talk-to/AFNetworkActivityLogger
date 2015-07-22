@@ -122,7 +122,7 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
     }
 
     if (self.requestLoggingBlock != nil) {
-      self.requestLoggingBlock(self.level, request);
+        self.requestLoggingBlock(self.level, request);
     } else {
         switch (self.level) {
             case AFLoggerLevelDebug:
@@ -167,7 +167,8 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
     NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:objc_getAssociatedObject(notification.object, AFNetworkRequestStartDate)];
 
     if (self.responseLoggingBlock != nil) {
-        self.responseLoggingBlock(self.level, request, response, elapsedTime, error);
+        self.responseLoggingBlock(self.level, request, response, responseObject,
+                                  elapsedTime, error);
     } else {
         if (error) {
             switch (self.level) {
