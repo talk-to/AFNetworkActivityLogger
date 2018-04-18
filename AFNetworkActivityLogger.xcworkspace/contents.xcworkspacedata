@@ -5,6 +5,9 @@
       location = "group:AFNetworkActivityLogger"
       name = "AFNetworkActivityLogger">
       <FileRef
+         location = "group:AFNetworkingWrapper">
+      </FileRef>
+      <FileRef
          location = "group:AFNetworkActivityLogger.h">
       </FileRef>
       <FileRef
