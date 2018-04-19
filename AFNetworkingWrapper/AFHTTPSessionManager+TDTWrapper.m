@@ -14,7 +14,7 @@ static NSString * const SnippedUserInfo = @"SnippedUserInfo";
 @implementation AFHTTPSessionManager (TDTWrapper)
 
 - (NSString *)tdt_snipTexts:(NSArray<NSString *> *)textsToSnip
-                 fromString:(NSURL *)string {
+                 fromString:(NSString *)string {
   TDTParameterAssert(textsToSnip);
   TDTParameterAssert(string);
   __block NSString *snippedString = [string copy];
