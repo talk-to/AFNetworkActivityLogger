@@ -6,7 +6,6 @@
 //
 
 #import "AFHTTPSessionManager+TDTWrapper.h"
-#import <TDTChocolate/TDTFoundationAdditions.h>
 
 static NSString * const SnippedText = @"--snipped--";
 static NSString * const SnippedUserInfo = @"SnippedUserInfo";
@@ -15,21 +14,21 @@ static NSString * const SnippedUserInfo = @"SnippedUserInfo";
 
 - (NSString *)tdt_snipTexts:(NSArray<NSString *> *)textsToSnip
                  fromString:(NSString *)string {
-  TDTParameterAssert(textsToSnip);
-  TDTParameterAssert(string);
+  NSAssert(textsToSnip != nil, @"textsToSnip should not be nil");
+  NSAssert(string != nil, @"string should not be nil");
   __block NSString *snippedString = [string copy];
-  [textsToSnip tdt_applyBlock:^(NSString *textToSnip) {
+  for (NSString *textToSnip in textsToSnip) {
     snippedString = [snippedString stringByReplacingOccurrencesOfString:textToSnip
                                                              withString:SnippedText];
-  }];
+  }
   
   return snippedString;
 }
 
 - (NSURL *)tdt_snipTexts:(NSArray<NSString *> *)textsToSnip
                   fromURL:(NSURL *)URL {
-  TDTParameterAssert(textsToSnip);
-  TDTParameterAssert(URL);
+  NSAssert(textsToSnip != nil, @"textsToSnip should not be nil");
+  NSAssert(URL != nil, @"URL should not be nil");
   NSString *snippedAbosulteURLString = [self tdt_snipTexts:textsToSnip
                                                 fromString:[URL absoluteString]];
   NSURL *snippedURL = [NSURL URLWithString:snippedAbosulteURLString];
@@ -43,8 +42,8 @@ static NSString * const SnippedUserInfo = @"SnippedUserInfo";
  */
 - (NSDictionary *)tdt_snipTexts:(NSArray<NSString *> *)textsToSnip
                    fromUserInfo:(NSDictionary *)userInfo {
-  TDTParameterAssert(textsToSnip);
-  TDTParameterAssert(userInfo);
+  NSAssert(textsToSnip != nil, @"textsToSnip should not be nil");
+  NSAssert(userInfo != nil, @"userInfo should not be nil");
   NSMutableDictionary *snippedUserInfo = [NSMutableDictionary dictionary];
   [userInfo enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     if ([obj isKindOfClass:[NSString class]]) {
