@@ -8,7 +8,6 @@
 #import "AFHTTPSessionManager+TDTWrapper.h"
 
 static NSString * const SnippedText = @"--snipped--";
-static NSString * const SnippedUserInfo = @"SnippedUserInfo";
 
 @implementation AFHTTPSessionManager (TDTWrapper)
 
