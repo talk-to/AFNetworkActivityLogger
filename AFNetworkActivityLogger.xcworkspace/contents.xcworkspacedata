@@ -11,4 +11,14 @@
          location = "group:AFNetworkActivityLogger.m">
       </FileRef>
    </Group>
+   <Group
+      location = "container:"
+      name = "AFNetworkingWrapper">
+      <FileRef
+         location = "group:AFNetworkingWrapper/AFHTTPSessionManager+TDTWrapper.h">
+      </FileRef>
+      <FileRef
+         location = "group:AFNetworkingWrapper/AFHTTPSessionManager+TDTWrapper.m">
+      </FileRef>
+   </Group>
 </Workspace>
